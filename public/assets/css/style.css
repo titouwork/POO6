@@ -1,0 +1,133 @@
+body {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+main > .animals {
+    --size: 250px;
+    width: 75vw;
+    margin: auto;
+    margin-top: var(--spacing2);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--size), 1fr));
+    gap: var(--spacing3);
+}
+
+main > .animals article {
+    --height: 470px;
+    background-color: #FFFFFFAA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    padding: var(--spacing2);
+    position: relative;
+    height: var(--height);
+}
+
+.animals article img {
+    transition: 0.5s ease;
+    filter: drop-shadow(2px 2px 6px var(--shadow));
+    max-width: calc(min(100%, var(--height)) - var(--spacing2));
+}
+.animals article:hover .hello {
+    opacity: 1;
+}
+
+.animals article:hover img {
+    width: calc(100% - var(--spacing2));
+}
+
+.hello {
+    background-color: var(--light);
+    border-radius: 1rem;
+    padding: 1rem;
+    position:absolute;
+    z-index: 2;
+    inset: 1rem;
+    width: fit-content;
+    height: fit-content;
+    filter: drop-shadow(1px 1px 2px var(--shadow));
+    transition: opacity 0.5s 0.3s;
+    opacity: 0;
+}
+
+.hello::after {
+    content:'';
+    background-color: var(--light);
+    bottom:-0.7rem;
+    right:30%;
+    position:absolute;
+    width: 2rem;
+    height: 2rem;
+    transform: rotate(-25deg) scaleX(0.5) rotate(45deg);
+}
+
+.notice {
+    position:absolute;
+    bottom: calc(var(--spacing2) * -1);
+    right: calc(var(--spacing2) * -1);
+    background-color: var(--primary);
+    padding: var(--spacing);
+    width: 100%;
+    color: var(--light);
+    box-shadow: 2px 2px 6px var(--shadow);
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.notice h1 {
+    margin: 0;
+    color: var(--light);
+}
+
+.notice ul {
+    padding: 0;
+    margin: 0;
+    margin-block-start: var(--spacing);
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--spacing);
+}
+
+.notice li {
+    display: flex;
+    align-items: center;
+}
+
+.notice li::before {
+    content:var(--icon);
+    margin-inline-end: var(--spacing-sm);
+    filter: invert(100%);
+}
+
+.not-dangerous {
+    --icon : url('../images/not_dangerous.png'); 
+}
+.dangerous {
+    --icon : url('../images/dangerous.png'); 
+}
+.vegetarian {
+    --icon : url('../images/vegetarian.png'); 
+}
+.carnivorous {
+    --icon : url('../images/carnivorous.png'); 
+}
+.paw {
+    --icon : url('../images/paws.png');
+}
+.size {
+    --icon : url('../images/ruler.png');
+}
+
+.iucn {
+    aspect-ratio: 1;
+    border:1px solid var(--light);
+    padding: var(--spacing-sm);
+    border-radius: 50%;
+}

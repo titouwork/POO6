@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Mouse+Memoirs&family=Raleway:wght@100;300;400;500;700&display=swap');
+
+:root {
+    --spacing-sm: 0.5rem;
+    --spacing: 1rem;
+    --spacing2: 2rem;
+    --spacing3: 3rem;
+    --title-font: 'Mouse Memoirs', sans-serif;
+    --text-font: 'Raleway', sans-serif;
+    --shadow: rgba(0, 0, 0, 0.5);
+    --primary: #ea5846;
+    --light: #f2eceb;
+    --dark: #130706;
+    --transparent-dark: #130706EE;
+}
+
+body {
+    margin: 0;
+    background-image: url('../images/background.webp');
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: var(--text-font);
+    color: var(--dark);
+    font-size: 1rem;
+    line-height: 150%;
+    perspective: 2000px;
+    position: relative;
+}
+
+header {
+    transform-style: preserve-3d;
+    perspective: 1500px;
+}
+
+header h1 {
+    --swing: 8deg;
+    transform-style: preserve-3d;
+    font-size: 3rem;
+    padding: var(--spacing2);
+    text-align: center;
+    background-color: var(--light);
+    box-shadow: 8px 8px 0 var(--primary);
+    width: fit-content;
+    margin: auto;
+    margin-top: var(--spacing2);
+    position: relative;
+    animation: swing 2s ease-in-out alternate backwards infinite;
+    transform-origin: center calc(var(--spacing3) * -1);
+}
+
+header h1::before, header h1::after {
+    content: "";
+    position: absolute;
+    height: var(--spacing3);
+    top: calc(var(--spacing3) * -1);
+    left: var(--spacing3);
+    width: 3px;
+    background-color: var(--dark);
+}
+
+
+header h1::after {
+    left: calc(100% - var(--spacing3));
+}
+
+header:hover h1 {
+    --swing:30deg;
+    filter: brightness(105%);
+}
+
+@keyframes swing {
+    0% {
+        transform: rotateX(var(--swing));
+    } 
+    100% {
+        transform: rotateX(calc(var(--swing) * -1));
+    }
+
+}
+
+h1,
+h2,
+h3 {
+    color: var(--primary);
+    font-family: var(--title-font);
+}
+
+h2 {
+    font-size: 2.5rem;
+    width: 75vw;
+    margin:auto;
+    margin-block-start: var(--spacing2);
+    text-transform: capitalize;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+hr {
+    background-color: var(--light);
+    opacity: 50%;
+    border: 0;
+    height: 1px;
+}
+
+.xdebug-var-dump {
+    background-color: var(--transparent-dark);
+    padding: var(--spacing);
+    border-radius: 4px;
+    color: var(--light);
+    margin: auto;
+    margin-block: var(--spacing);
+    width: 80%;
+}
+
